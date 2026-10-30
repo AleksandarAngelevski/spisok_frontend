@@ -1,0 +1,7 @@
+<div class="container">
+  @for (note of notes; track note.id) {
+    <app-note-component [note]="note" />
+  } @empty {
+    <p>No notes found!</p>
+  }
+</div>
