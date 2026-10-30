@@ -22,5 +22,5 @@ jobs:
 
       - uses: azure/webapps-deploy@v3
         with:
-          app-name: <unique-name>
-          package: dist/<project-name>/browser
+          app-name: spsiok-frontend
+          package: dist/spisok-frontend/browser
