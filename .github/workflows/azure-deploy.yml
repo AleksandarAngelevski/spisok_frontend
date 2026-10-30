@@ -11,6 +11,9 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: spisok-frontend
     steps:
       - uses: actions/checkout@v4
 
@@ -18,6 +21,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: spisok-frontend/package-lock.json
 
       - run: npm ci
       - run: npm run build -- --configuration production
@@ -26,4 +30,4 @@ jobs:
         with:
           app-name: spisok-frontend
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: dist/spisok-frontend/browser
+          package: spisok-frontend/dist/spisok-frontend/browser
