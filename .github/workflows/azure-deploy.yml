@@ -24,6 +24,11 @@ jobs:
 
       - uses: azure/webapps-deploy@v3
         with:
+<<<<<<< HEAD
           app-name: <unique-name>
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: dist/<project-name>/browser
+=======
+          app-name: spsiok-frontend
+          package: dist/spisok-frontend/browser
+>>>>>>> b59c28da7dad23a820b72d5b1626683924a55c42
