@@ -1,1 +1,1 @@
-export const environment = { apiUrl: 'http://spisok.aleksandarangelevski.com/api' };
+export const environment = { apiUrl: 'https://spisok.aleksandarangelevski.com/api' };
