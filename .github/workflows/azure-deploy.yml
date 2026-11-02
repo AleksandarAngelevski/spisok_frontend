@@ -1,4 +1,4 @@
-name: Deploy Angular to Azure App Service
+name: Deploy Angular SSR to Azure App Service
 
 on:
   push:
@@ -21,22 +21,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: spisok-frontend/package-lock.json
-
-      - run: npm ci
-      - run: npm run build -- --configuration production
-
-      - name: Ensure index.html exists
-        run: |
-          cd dist/spisok-frontend/browser
-          [ -f index.html ] || cp index.csr.html index.html
-
-      - uses: azure/webapps-deploy@v3
-        with:
-          app-name: spisok-frontend
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: spisok-frontend/dist/spisok-frontend/browser
+      - uses: actions/setup-node@v22-placeholder
