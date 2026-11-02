@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: deploy-frontend
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -25,6 +29,11 @@ jobs:
 
       - run: npm ci
       - run: npm run build -- --configuration production
+
+      - name: Ensure index.html exists
+        run: |
+          cd dist/spisok-frontend/browser
+          [ -f index.html ] || cp index.csr.html index.html
 
       - uses: azure/webapps-deploy@v3
         with:
