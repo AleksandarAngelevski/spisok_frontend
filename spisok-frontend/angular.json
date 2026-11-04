@@ -31,9 +31,9 @@
             "outputMode": "server",
             "security": {
               "allowedHosts": [
-                "localhost",
-                "spisok-frontend-afbgcegddhfjhnct.swedencentral-01.azurewebsites.net",
-                "spisok.aleksandarangeleski.com"
+                    "spisok-frontend-afbgcegddhfjhnct.germanywestcentral-01.azurewebsites.net",
+                    "localhost",
+                    "spisok.aleksandarangeleski.com"
               ]
             },
             "ssr": {
