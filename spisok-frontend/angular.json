@@ -30,7 +30,10 @@
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
-              "allowedHosts": ["https://spisok-frontend-afbgcegddhfjhnct.swedencentral-01.azurewebsites.net/"]
+              "allowedHosts": [
+                "spisok-frontend-afbgcegddhfjhnct.swedencentral-01.azurewebsites.net",
+                "spisok.aleksandarangeleski.com"
+              ]
             },
             "ssr": {
               "entry": "src/server.ts"
