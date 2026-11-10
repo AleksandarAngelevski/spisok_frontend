@@ -13,6 +13,8 @@ import { NotesService } from './notes.service';
 export class NotesListComponent implements OnInit {
   private readonly notesService = inject(NotesService);
   notes = signal<Note[]>([]);
+  isLoading = signal(true);
+  loadError = signal('');
   isCreateFormOpen = signal(false);
   isSaving = signal(false);
   title = '';
@@ -20,8 +22,15 @@ export class NotesListComponent implements OnInit {
   createError = signal('');
 
   ngOnInit(): void {
-    this.notesService.getNotes().subscribe((notes) => {
-      this.notes.set(notes);
+    this.notesService.getNotes().subscribe({
+      next: (notes) => {
+        this.notes.set(notes);
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.loadError.set('Could not load notes. Please try again.');
+        this.isLoading.set(false);
+      },
     });
   }
 

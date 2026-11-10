@@ -26,9 +26,15 @@
     </form>
   }
 
-  @for (note of notes(); track $index) {
-    <app-note-component [note]="note" />
-  } @empty {
-    <p>No notes found!</p>
+  @if (isLoading()) {
+    <p>Loading notes…</p>
+  } @else if (loadError()) {
+    <p role="alert">{{ loadError() }}</p>
+  } @else {
+    @for (note of notes(); track $index) {
+      <app-note-component [note]="note" />
+    } @empty {
+      <p>No notes found!</p>
+    }
   }
 </div>
