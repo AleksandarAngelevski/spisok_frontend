@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Note } from './note.model';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class NotesService {
   }
 
   createNote(note: Omit<Note, 'id'>): Observable<Note> {
-    return this.http.post<Note>(this.notesUrl, note);
+    return this.http.post<Note>(`${this.notesUrl}/create`, note);
   }
 
   updateNote(id: number, note: Omit<Note, 'id'>): Observable<Note> {

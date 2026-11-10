@@ -1,5 +1,32 @@
 <div class="container">
-  @for (note of notes; track note.id) {
+  <button type="button" (click)="isCreateFormOpen.set(!isCreateFormOpen())">
+    Create note
+  </button>
+
+  @if (isCreateFormOpen()) {
+    <form class="create-note-form" (ngSubmit)="createNote()">
+      <label>
+        Title
+        <input name="title" [(ngModel)]="title" required />
+      </label>
+
+      <label>
+        Description
+        <textarea name="description" [(ngModel)]="description" required></textarea>
+      </label>
+
+      @if (createError()) {
+        <p role="alert">{{ createError() }}</p>
+      }
+
+      <button type="submit" [disabled]="isSaving()">
+        {{ isSaving() ? 'Creating…' : 'Save note' }}
+      </button>
+      <button type="button" (click)="isCreateFormOpen.set(false)">Cancel</button>
+    </form>
+  }
+
+  @for (note of notes(); track $index) {
     <app-note-component [note]="note" />
   } @empty {
     <p>No notes found!</p>
