@@ -57,6 +57,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -71,7 +77,8 @@
               "buildTarget": "spisok-frontend:build:production"
             },
             "development": {
-              "buildTarget": "spisok-frontend:build:development"
+              "buildTarget": "spisok-frontend:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
